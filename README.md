@@ -17,3 +17,11 @@ Click the above "Open in Gitpod" button to start a new workspace. Once you're re
 ### An existing project
 
 To get started with Python Flask on Gitpod, add a [`.gitpod.yml`](./.gitpod.yml) file which contains the configuration to improve the developer experience on Gitpod. To learn more, please see the [Getting Started](https://www.gitpod.io/docs/getting-started) documentation.
+
+## Exec Api Test
+https://5000-amber-moose-fdmven55.ws-us17.gitpod.io/dev/
+
+
+## doc aws
+https://docs.aws.amazon.com/pt_br/lambda/latest/dg/services-apigateway-tutorial.html
+https://docs.aws.amazon.com/lambda/latest/dg/services-apigateway.html
