@@ -7,18 +7,26 @@ def lambda_handler(event, context):
 
     s3 = boto3.client('s3')
     bucket = os.environ['AWS_BUCKET']
+    expire = os.environ['EXPIRE_IN']
 
-    fileName = event['file_name']
-    data = event['data']
-    returnType = event['return_type']
+    fileName = event['headers']['file_name']
+    data = event['headers']['data']
+    #returnType = event['headers']['return_type']
 
-    fileObject = s3.get_object(
-        Bucket=bucket,
-        Key=fileName
-    )
-    # Retorna o conteudo do arquivo
-    #return transformed['Body'].read().decode('utf-8')
-    return fileObject
+    urlFile = s3.generate_presigned_url(
+    ClientMethod='get_object', 
+    Params={'Bucket': bucket, 'Key': fileName},
+    ExpiresIn=int(expire))    
+
+    return {
+        "statusCode": 200,
+        "headers": {
+            "Content-Type": "application/json"
+        },
+        "body": {
+            "url": urlFile
+        }
+    }
 
 
 def lambda_handler_download_file(event, context): 
